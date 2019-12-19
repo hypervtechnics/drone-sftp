@@ -21,6 +21,6 @@ For now this is not the native drone plugin usage style.
     PLUGIN_SOURCE: ./                    # The source directory
     PLUGIN_FILTER: *.*                   # The filter for the files to upload. *.* is for all
     PLUGIN_TARGET: /                     # The target directory
-    PLUGIN_CLEAN: false                  # Removes all files and directories in target
+    PLUGIN_CLEAR: false                  # Removes all files and directories in target
     PLUGIN_OVERWRITE: false              # Allows overwriting already existing files
 ```
