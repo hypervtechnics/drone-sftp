@@ -9,7 +9,7 @@ namespace Drone.SFTP
 {
     public static class SftpClientExtensions
     {
-        public static int DeleteDirectoryRecursively(this SftpClient sftp, string path)
+        public static int DeleteDirectoryRecursively(this SftpClient sftp, string path, bool verbose)
         {
             var filesDeleted = 0;
 
@@ -22,12 +22,22 @@ namespace Drone.SFTP
                 {
                     sftp.DeleteFile(file.FullName);
                     filesDeleted++;
+
+                    if (verbose)
+                    {
+                        Console.WriteLine($"Deleted file {file.FullName}");
+                    }
                 }
 
                 foreach (var dir in directories)
                 {
                     ClearFiles(sftp.ListDirectory(dir.FullName).ToList());
                     sftp.DeleteDirectory(dir.FullName);
+
+                    if (verbose)
+                    {
+                        Console.WriteLine($"Deleted directory {dir.FullName}");
+                    }
                 }
             }
 

@@ -1,26 +1,23 @@
 # drone-sftp
 
-A plugin for drone to upload files to an SFTP server.
+A plugin for Drone to upload files to an SFTP server.
 
 ## Usage
-
-For now this is not the native drone plugin usage style.
 
 ```yaml
 - name: deploy
   image: hypervtechnics/drone-sftp
-  commands:
-  - dotnet /app/Drone.SFTP.dll
-  environment:
-    PLUGIN_HOST: sftp.example.com        # The host
-    PLUGIN_PORT: 22                      # The port
-    PLUGIN_USERNAME:                     # The username
-      from_secret: sftp_username         # Use username from secret store
-    PLUGIN_PASSWORD:                     # The password
-      from_secret: sftp_password         # Use password from secret store
-    PLUGIN_SOURCE: ./                    # The source directory
-    PLUGIN_FILTER: *.*                   # The filter for the files to upload. *.* is for all
-    PLUGIN_TARGET: /                     # The target directory
-    PLUGIN_CLEAR: false                  # Removes all files and directories in target
-    PLUGIN_OVERWRITE: false              # Allows overwriting already existing files
+  settings:
+    host: sftp.example.com        # The host
+    port: 22                      # The port
+    username:                     # The username
+      from_secret: sftp_username  # Use username from secret store
+    password:                     # The password
+      from_secret: sftp_password  # Use password from secret store
+    source: ./                    # The source directory
+    filter: *.*                   # The filter for the files to upload. *.* is for all
+    target: /                     # The target directory
+    clean: false                  # Removes all files and directories in target
+    overwrite: false              # Allows overwriting already existing files
+    verbose: false                # Whether to make a lot of output like e.g. deleted and uploaded files
 ```

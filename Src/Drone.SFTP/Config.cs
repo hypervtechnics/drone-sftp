@@ -55,6 +55,7 @@ namespace Drone.SFTP
             Target = Environment.GetEnvironmentVariable("PLUGIN_TARGET") ?? "/";
             Clear = bool.TryParse(Environment.GetEnvironmentVariable("PLUGIN_CLEAR"), out bool clear) ? clear : false;
             Overwrite = bool.TryParse(Environment.GetEnvironmentVariable("PLUGIN_OVERWRITE"), out bool overwrite) ? overwrite : false;
+            Verbose = bool.TryParse(Environment.GetEnvironmentVariable("PLUGIN_VERBOSE"), out bool verbose) ? verbose : false;
 
             return this;
         }
@@ -76,5 +77,7 @@ namespace Drone.SFTP
         public bool Clear { get; set; }
 
         public bool Overwrite { get; set; }
+
+        public bool Verbose { get; set; }
     }
 }
